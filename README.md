@@ -38,7 +38,6 @@ youtubeShortsFactory/
 
 - **For Docker setup**: Docker and Docker Compose
 - **For local setup**: Python 3.9+, macOS (for the start script) or modify for your OS
-- GPU recommended for ComfyUI (can run on CPU but slower)
 
 ## Quick Start with Docker (Recommended)
 
@@ -111,39 +110,9 @@ The easiest way to get started is using Docker, which includes the pre-configure
 - View logs: `docker-compose logs -f`
 - Restart n8n: `docker-compose restart`
 - Rebuild after changes: `docker-compose up -d --build`
-
-### Local Setup (Without Docker)
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd youtubeShortsFactory
-   ```
-
-2. **Set up ComfyUI**
-   ```bash
-   cd ComfyUI
-   pip install -r requirements.txt
-   # Add your Stable Diffusion models to models/checkpoints/
-   ```
-
-3. **Set up Kokoro**
-   ```bash
-   cd kokoro
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install kokoro fastapi uvicorn soundfile
-   ```
-
-4. **Set up n8n** (optional, if you want to use the workflow)
-   - Install n8n: `npm install n8n -g`
-   - Copy the `n8n_data` directory to your n8n data location
-   - Start n8n: `n8n start`
-   - Access at `http://localhost:5678`
-
+- 
 ### Running the Services
 
-**If using Docker for n8n:**
 1. Start n8n: `docker-compose up -d`
 2. Start ComfyUI and Kokoro using one of the options below
 
@@ -167,19 +136,6 @@ source venv/bin/activate
 python server.py
 ```
 
-### Using the APIs
-
-**Kokoro TTS API** (port 5151):
-```bash
-curl -X POST http://localhost:5151/tts \
-  -H "Content-Type: application/json" \
-  -d '{"text": "Hello, this is a test", "voice": "af_bella", "speed": 1.0}'
-```
-
-**ComfyUI API** (port 8188):
-- Access the web interface at `http://localhost:8188`
-- Use the API endpoints documented in ComfyUI for programmatic access
-
 ## What I Learned
 
 - **API Integration**: Built REST APIs to connect multiple AI services together
@@ -189,17 +145,7 @@ curl -X POST http://localhost:5151/tts \
 - **System Design**: Designed a modular architecture where each service can run independently
 - **DevOps**: Created startup scripts and logging infrastructure for managing multiple services
 
-## Notes
-
-- **Pre-configured Workflow**: The `n8n_data/database.sqlite` file contains the "Automatic YT Shorts" workflow. When you mount this volume to the Docker container, the workflow is automatically available.
-- **Outputs**: 
-  - ComfyUI outputs are saved to `n8n_data/ComfyUI_Output/`
-  - Kokoro audio files are saved to `n8n_data/audio/`
-- **Logs**: Service logs are stored in the `logs/` directory
-- **Configuration**: The `extra_model_paths.yaml` file configures ComfyUI model paths
-- **Docker**: The Docker setup includes Python and video processing dependencies (ffmpeg, moviepy) needed for the workflow
-
-## License
+## Note
 
 This project uses open-source components:
 - ComfyUI: GPL-3.0 License
