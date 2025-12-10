@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Model files and outputs (too large for git)
+ComfyUI/models/
+ComfyUI/output/
+ComfyUI/input/
+!ComfyUI/input/example.png
+ComfyUI/temp/
+ComfyUI/custom_nodes/
+!ComfyUI/custom_nodes/example_node.py.example
+ComfyUI/user/
+ComfyUI/web/extensions/*
+!ComfyUI/web/extensions/logging.js.example
+!ComfyUI/web/extensions/core/
+
+# n8n data (contains generated content and databases)
+n8n_data/
+!n8n_data/.gitkeep
+
+# Third-party projects (too large for git - clone separately)
+# But include custom files we created
+ComfyUI/*
+!ComfyUI/start_comfyui.sh
+kokoro/*
+!kokoro/server.py
+!kokoro/start_kokoro.sh
+
+# Backups
+Backups/
+
+# Configuration files with sensitive paths
+ComfyUI/extra_model_paths.yaml
+
+# Environment variables
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Audio/Video outputs (generated content)
+*.mp3
+*.mp4
+*.wav
+*.avi
+*.mov
+
+# Temporary files
+*.tmp
+*.temp
+crash.journal*
+
